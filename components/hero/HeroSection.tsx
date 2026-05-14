@@ -1,10 +1,16 @@
-import { Bounded } from './Bounded'
-import { ButtonLink } from './ButtonLink'
-import { Heading } from './Heading'
+import { Bounded } from '../Bounded'
+import { ButtonLink } from '../ButtonLink'
+import { Heading } from '../Heading'
+import { TallLogo } from './TallLogo'
+import { WideLogo } from './WideLogo'
 
 const HeroSection = () => {
   return (
     <Bounded className='bg-brand-pink relative h-dvh bg-texture overflow-hidden'>
+      <div className='absolute inset-0 pt-20 flex items-center'>
+        <TallLogo className='w-full text-brand-purple hidden opacity-20 mix-blend-multiply lg:block' />
+        <WideLogo className='w-full text-brand-purple opacity-20 mix-blend-multiply lg:hidden' />
+      </div>
       <div className='grid absolute inset-0 mx-auto mt-24 max-w-6xl grid-rows-[1fr_auto] px-6 py-10 md:py-16'>
         <Heading
           as='h1'
