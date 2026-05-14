@@ -33,11 +33,13 @@ export default function RootLayout({
       lang='en'
       className={`${bowlby.variable} ${dmMono.variable} h-full antialiased font-mono font-medium text-zinc-800`}
     >
-      <main>
-        <Header />
-        <body className='min-h-full flex flex-col'>{children}</body>
-      </main>
-      <SVGFilters />
+      <body className='min-h-full flex flex-col'>
+        <main>
+          <Header />
+          {children}
+        </main>
+        <SVGFilters />
+      </body>
     </html>
   )
 }

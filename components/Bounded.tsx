@@ -12,6 +12,7 @@ export function Bounded({
   as: Comp = 'section',
   className,
   children,
+  style,
   ...restProps
 }: BoundedProps) {
   return (
@@ -20,6 +21,7 @@ export function Bounded({
         'px-6 py-10 md:py-16 [.header+&]:pt-44 md:[.header+&]:pt-32 w-full',
         className,
       )}
+      style={style}
       {...restProps}
     >
       <div className='mx-auto w-full max-w-6xl'>{children}</div>
