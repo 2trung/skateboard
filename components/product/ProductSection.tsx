@@ -1,5 +1,6 @@
 import { Bounded } from '../Bounded'
 import { Heading } from '../Heading'
+import SlideIn from '../SlideIn'
 import ProductItem from './ProductItem'
 
 type Props = {}
@@ -38,9 +39,11 @@ export default function ProductSection({}: Props) {
 
   return (
     <Bounded className='bg-texture bg-brand-gray'>
-      <Heading className='text-center mb-4 lg:mb-6' as='h2'>
-        Latest drop
-      </Heading>
+      <SlideIn>
+        <Heading className='text-center mb-4 lg:mb-6' as='h2'>
+          Latest drop
+        </Heading>
+      </SlideIn>
       <div className='text-center mb-6 lg:mb-10'>
         Grab out freshest designs before theys sell out!
       </div>

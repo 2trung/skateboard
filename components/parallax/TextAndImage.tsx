@@ -4,6 +4,7 @@ import { Bounded } from '../Bounded'
 import { Heading } from '../Heading'
 import { ButtonLink } from '../ButtonLink'
 import ParallaxImage from './ParallaxImage'
+import SlideIn from '../SlideIn'
 
 type Props = {
   foregroundImage: string
@@ -42,17 +43,23 @@ const TextAndImage = ({
             variant === 'imageOnLeft' && 'md:order-2',
           )}
         >
-          <Heading as='h2' size='lg'>
-            {header}
-          </Heading>
-          <p className='max-w-md text-lg leading-relaxed'>{text}</p>
-          <ButtonLink
-            href='/build'
-            className='mt-4'
-            color={theme == 'Lime' ? 'orange' : 'lime'}
-          >
-            Shop Boards
-          </ButtonLink>
+          <SlideIn>
+            <Heading as='h2' size='lg'>
+              {header}
+            </Heading>
+          </SlideIn>
+          <SlideIn>
+            <p className='max-w-md text-lg leading-relaxed'>{text}</p>
+          </SlideIn>
+          <SlideIn>
+            <ButtonLink
+              href='/build'
+              className='mt-4'
+              color={theme == 'Lime' ? 'orange' : 'lime'}
+            >
+              Shop Boards
+            </ButtonLink>
+          </SlideIn>
         </div>
         <ParallaxImage
           foregroundImage={foregroundImage}
