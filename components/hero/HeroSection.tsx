@@ -1,10 +1,16 @@
 import { Bounded } from '../Bounded'
 import { ButtonLink } from '../ButtonLink'
 import { Heading } from '../Heading'
+import InteractiveSkateboard from './InteractiveSkateboard'
 import { TallLogo } from './TallLogo'
 import { WideLogo } from './WideLogo'
 
 const HeroSection = () => {
+  const deckTextureUrl = '/skateboard/deck.webp'
+  const wheelTextureUrl = '/skateboard/SkateWheel1.png'
+  const truckColor = '#555555'
+  const boltsColor = '#555555'
+
   return (
     <Bounded className='bg-brand-pink relative h-dvh bg-texture overflow-hidden'>
       <div className='absolute inset-0 pt-20 flex items-center'>
@@ -34,6 +40,15 @@ const HeroSection = () => {
           </ButtonLink>
         </div>
       </div>
+      <InteractiveSkateboard
+        deckTextureUrls={[deckTextureUrl]}
+        wheelTextureUrls={[wheelTextureUrl]}
+        deckTextureUrl={deckTextureUrl}
+        wheelTextureUrl={wheelTextureUrl}
+        truckColor={truckColor}
+        boltsColor={boltsColor}
+        constantWheelSpin={true}
+      />
     </Bounded>
   )
 }
