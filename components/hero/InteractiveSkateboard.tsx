@@ -1,11 +1,17 @@
 'use client'
 import { Canvas, ThreeEvent, useThree } from '@react-three/fiber'
 import { Suspense, useEffect, useRef, useState } from 'react'
-import { ContactShadows, Environment, OrbitControls } from '@react-three/drei'
+import {
+  ContactShadows,
+  Environment,
+  Html,
+  OrbitControls,
+} from '@react-three/drei'
 import { Skateboard } from './Skateboard'
 import * as THREE from 'three'
 import gsap from 'gsap'
 import HotSpot from './HotSpot'
+import { WavyPaths } from '../WavyPaths'
 
 type SkateboardProps = {
   deckTextureUrls: string[]
@@ -79,6 +85,24 @@ function Scene({
       window.removeEventListener('resize', setZoom)
     }
   }, [camera])
+
+  useEffect(() => {
+    if (!containerRef.current || !originRef.current) return
+    gsap.to(containerRef.current.position, {
+      x: 0.2,
+      duration: 3,
+      yoyo: true,
+      ease: 'sine.inOut',
+      repeat: -1,
+    })
+    gsap.to(containerRef.current.rotation, {
+      y: Math.PI / 32,
+      duration: 3,
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut',
+    })
+  }, [])
 
   function onClick(event: ThreeEvent<MouseEvent>) {
     event.stopPropagation()
@@ -241,7 +265,23 @@ function Scene({
           </group>
         </group>
       </group>
-      <ContactShadows />
+
+      <ContactShadows opacity={0.8} position={[0, -0.08, 0]} />
+
+      <group
+        rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+        position={[0, -0.09, -0.5]}
+        scale={[0.2, 0.2, 0.2]}
+      >
+        <Html
+          wrapperClass='pointer-event-none'
+          transform
+          zIndexRange={[0, 1]}
+          occlude='blending'
+        >
+          <WavyPaths />
+        </Html>
+      </group>
     </group>
   )
 }
