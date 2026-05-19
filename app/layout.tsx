@@ -35,11 +35,7 @@ export default function RootLayout({
       className={`${bowlby.variable} ${dmMono.variable} h-full antialiased font-mono font-medium text-zinc-800`}
     >
       <body className='min-h-full flex flex-col'>
-        <main>
-          <Header />
-          {children}
-          <Footer />
-        </main>
+        <main>{children}</main>
         <SVGFilters />
       </body>
     </html>
